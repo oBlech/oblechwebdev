@@ -12,26 +12,26 @@ import { useScrollTo } from "@/hooks/useScrollTo";
 export default function Home() {
   const scrollTo = useScrollTo();
 
-  <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "OBLECH",
-      "url": "https://oblech.dev",
-      "jobTitle": "Web Developer",
-      "knowsAbout": ["React", "Next.js", "TailwindCSS", "Web Development", "Framer"],
-      "offers": {
-        "@type": "Offer",
-        "serviceType": "Web Development Services"
-      }
-    })
-  }}
-  />
-
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "OBLECH",
+            "url": "https://oblech.dev",
+            "jobTitle": "Web Developer",
+            "knowsAbout": ["React", "Next.js", "TailwindCSS", "Web Development", "Framer"],
+            "offers": {
+              "@type": "Offer",
+              "serviceType": "Web Development Services"
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <section className="min-h-screen pt-16 vaporwave-grid">
         <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-4rem)] items-center">
@@ -162,8 +162,11 @@ export default function Home() {
               const formData = new FormData(e.currentTarget);
               
               try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('https://contact-form-worker.andrew-blach.workers.dev', {
                   method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
                   body: JSON.stringify({
                     name: formData.get('name'),
                     email: formData.get('email'),
