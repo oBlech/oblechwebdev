@@ -33,7 +33,7 @@ export const onRequestPost = async (context: {
 
     await context.env.SENDGRID.send({
       to: "oblechdev@gmail.com",
-      from: "noreply@oblech-aoe.pages.dev",
+      from: "contact@oblech.dev",
       subject: "New Contact Form Submission",
       text: emailContent,
     });
