@@ -19,7 +19,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "OBLECH",
-      "url": "https://oblech-aoe.pages.dev",
+      "url": "https://oblech-eo0.pages.dev",
       "jobTitle": "Web Developer",
       "knowsAbout": ["React", "Next.js", "TailwindCSS", "Web Development", "Framer"],
       "offers": {
