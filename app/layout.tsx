@@ -54,6 +54,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://oblech.dev'
   },
+  icons: {
+    icon: [
+      {
+        url: "/code2.svg",
+        href: "/code2.svg",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
