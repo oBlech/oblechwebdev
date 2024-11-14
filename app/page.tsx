@@ -174,14 +174,17 @@ export default function Home() {
                   }),
                 });
                 
-                if (response.ok) {
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
                   alert('Message sent successfully!');
                   e.currentTarget.reset();
                 } else {
-                  alert('Failed to send message. Please try again.');
+                  alert(`Failed to send message: ${data.error || 'Unknown error'}`);
                 }
               } catch (error) {
                 alert('Failed to send message. Please try again.');
+                console.error('Contact form error:', error);
               }
             }}>
               <div className="space-y-2">
@@ -203,7 +206,7 @@ export default function Home() {
             <p className="text-muted-foreground">
               Or reach out directly at{" "}
               <a href="mailto:contact@oblech.dev" className="text-primary hover:underline">
-                oblechdev@gmail.com
+                contact@oblech.dev
               </a>
             </p>
           </div>
