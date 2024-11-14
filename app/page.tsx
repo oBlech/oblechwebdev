@@ -86,7 +86,13 @@ export default function Home() {
               Specialized in modern web development technologies
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             <SkillCard
               icon={<Code2 className="h-8 w-8" />}
               title="Frontend Development"
@@ -102,7 +108,7 @@ export default function Home() {
               title="SEO Optimization"
               description="Implementing SEO best practices to improve visibility and ranking."
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -121,7 +127,13 @@ export default function Home() {
               Some of my recent projects
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             <ProjectCard
               title="Social Hub"
               description="Platform for purchasing social media plans and scheduling expert social media consultations."
@@ -137,7 +149,7 @@ export default function Home() {
               description="Interactive restaurant website with online ordering, menu management, and reservation system."
               image="/portfolio-images/restaurant.png"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -156,41 +168,48 @@ export default function Home() {
               Let's discuss your next project
             </p>
           </motion.div>
-          <Card className="p-6">
-            <form 
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              className="space-y-6"
-            >
-              <input 
-                type="hidden" 
-                name="access_key" 
-                value="40c8eb3c-fea8-42cb-98ce-9c19573cce1c"
-              />
-              
-              <div className="space-y-2">
-                <Input name="name" placeholder="Your Name" required />
-              </div>
-              <div className="space-y-2">
-                <Input name="email" type="email" placeholder="Your Email" required />
-              </div>
-              <div className="space-y-2">
-                <Textarea name="message" placeholder="Your Message" className="min-h-[150px]" required />
-              </div>
-              <Button className="w-full" size="lg" type="submit">
-                Send Message
-                <Send className="ml-2 h-4 w-4" />
-              </Button>
-            </form>
-          </Card>
-          <div className="mt-8 text-center">
-            <p className="text-muted-foreground">
-              Or reach out directly at{" "}
-              <a href="mailto:contact@oblech.dev" className="text-primary hover:underline">
-                contact@oblech.dev
-              </a>
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="p-6">
+              <form 
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                className="space-y-6"
+              >
+                <input 
+                  type="hidden" 
+                  name="access_key" 
+                  value="40c8eb3c-fea8-42cb-98ce-9c19573cce1c"
+                />
+                
+                <div className="space-y-2">
+                  <Input name="name" placeholder="Your Name" required />
+                </div>
+                <div className="space-y-2">
+                  <Input name="email" type="email" placeholder="Your Email" required />
+                </div>
+                <div className="space-y-2">
+                  <Textarea name="message" placeholder="Your Message" className="min-h-[150px]" required />
+                </div>
+                <Button className="w-full" size="lg" type="submit">
+                  Send Message
+                  <Send className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+            </Card>
+            <div className="mt-8 text-center">
+              <p className="text-muted-foreground">
+                Or reach out directly at{" "}
+                <a href="mailto:contact@oblech.dev" className="text-primary hover:underline">
+                  contact@oblech.dev
+                </a>
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </main>
