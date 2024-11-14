@@ -83,7 +83,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">My Expertise</h2>
             <p className="text-muted-foreground">
-              Specialized in modern web development technologies
+            Specializing in modern web development technologies to create seamless, responsive sites
             </p>
           </motion.div>
           <motion.div 
@@ -124,7 +124,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">Featured Work</h2>
             <p className="text-muted-foreground">
-              A collection of my recent projects
+            A few recent projects, each built with care for a smooth user experience and thoughtful design
             </p>
           </motion.div>
           <motion.div 
