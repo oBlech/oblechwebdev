@@ -4,10 +4,10 @@ interface EmailPayload {
   message: string;
 }
 
-export async function onRequestPost(context: any) {
+export const onRequestPost = async (context) => {
   try {
-    const { request } = context;
-    const payload: EmailPayload = await request.json();
+    const request = context.request;
+    const payload = await request.json();
 
     const emailContent = `
       New Contact Form Submission
@@ -33,4 +33,4 @@ export async function onRequestPost(context: any) {
       headers: { 'Content-Type': 'application/json' },
     });
   }
-} 
+}; 
