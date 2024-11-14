@@ -157,51 +157,14 @@ export default function Home() {
             </p>
           </motion.div>
           <Card className="p-6">
-            <form className="space-y-6" onSubmit={async (e) => {
-              e.preventDefault();
-              const formData = new FormData(e.currentTarget);
+            <form 
+              action="https://formsubmit.co/oblechdev@gmail.com" 
+              method="POST"
+              className="space-y-6"
+            >
+              <input type="hidden" name="_next" value="https://oblech.dev" />
+              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
               
-              try {
-                console.log('Sending request to worker...');
-                const response = await fetch('https://contact-form-worker.andrew-blach.workers.dev', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    message: formData.get('message'),
-                  }),
-                });
-
-                // Log the raw response
-                const responseText = await response.text();
-                console.log('Raw response:', responseText);
-
-                // Try to parse as JSON if possible
-                let responseData;
-                try {
-                  responseData = JSON.parse(responseText);
-                  console.log('Parsed response:', responseData);
-                } catch (e) {
-                  console.log('Response was not JSON:', responseText);
-                }
-
-                if (!response.ok) {
-                  throw new Error(`Failed to send message: ${responseText}`);
-                }
-
-                // Clear form
-                e.currentTarget.reset();
-                
-                // Show success message
-                alert('Message sent successfully! We will get back to you soon.');
-              } catch (error) {
-                console.error('Detailed error:', error);
-                alert(`Failed to send message: ${error.message}`);
-              }
-            }}>
               <div className="space-y-2">
                 <Input name="name" placeholder="Your Name" required />
               </div>
