@@ -164,6 +164,9 @@ export default function Home() {
             >
               <input type="hidden" name="_next" value="https://oblech.dev" />
               <input type="hidden" name="_subject" value="New Contact Form Submission!" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon." />
+              <input type="hidden" name="_captcha" value="true" />
               
               <div className="space-y-2">
                 <Input name="name" placeholder="Your Name" required />
