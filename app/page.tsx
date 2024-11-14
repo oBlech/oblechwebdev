@@ -162,11 +162,10 @@ export default function Home() {
               method="POST"
               className="space-y-6"
             >
-              {/* Add your Web3Forms access key here */}
               <input 
                 type="hidden" 
                 name="access_key" 
-                value=" 2c94d341-50b5-42ee-bb43-ac4aee948055"
+                value="2c94d341-50b5-42ee-bb43-ac4aee948055"
               />
               
               <div className="space-y-2">
