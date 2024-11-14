@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://oblech-aoe.pages.dev',
+  siteUrl: 'https://oblech.dev',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [

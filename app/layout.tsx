@@ -7,12 +7,12 @@ import { Navbar } from '@/components/navbar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://oblech-aoe.pages.dev'),
+  metadataBase: new URL('https://oblech.dev'),
   title: {
     default: 'OBLECH - Web Developer & SEO Expert',
     template: '%s | OBLECH'
   },
-  description: 'Professional web developer specializing in React, Next.js, and TailwindCSS with a focus on modern, performant web applications.',
+  description: 'Professional web developer specializing in modern web applications and SEO optimization.',
   keywords: ['web developer', 'react developer', 'nextjs developer', 'frontend developer', 'SEO expert', 'TailwindCSS specialist'],
   creator: 'OBLECH',
   openGraph: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'ws4Jmmc-f_BsMQNB_D0b83Sy97I5BinPjJBJ4l0RLA8',
+    google: 'spPKfmBurfd7-SzIPZYrVeVp__IuAkea4f5r7PXcFcc',
   },
   alternates: {
     canonical: 'https://oblech-aoe.pages.dev'
