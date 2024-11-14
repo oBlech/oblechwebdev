@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://oblech-aoe.pages.dev',
+    url: 'https://oblech.dev',
     title: 'OBLECH - Web Developer & SEO Expert',
     description: 'Professional web developer specializing in React, Next.js, and TailwindCSS with a focus on modern, performant web applications.',
     siteName: 'OBLECH',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     google: 'spPKfmBurfd7-SzIPZYrVeVp__IuAkea4f5r7PXcFcc',
   },
   alternates: {
-    canonical: 'https://oblech-aoe.pages.dev'
+    canonical: 'https://oblech.dev'
   },
 };
 
