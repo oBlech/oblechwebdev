@@ -50,8 +50,8 @@ export default function Home() {
             </p>
             <div className="flex gap-4">
               <Button size="lg" onClick={() => scrollTo("work")}>
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <span className="text-white">View My Work</span>
+                <ArrowRight className="ml-2 h-4 w-4 text-white" />
               </Button>
               <Button size="lg" variant="outline" onClick={() => scrollTo("contact")}>
                 Contact Me
@@ -196,8 +196,8 @@ export default function Home() {
                   <Textarea name="message" placeholder="Your Message" className="min-h-[150px]" required />
                 </div>
                 <Button className="w-full" size="lg" type="submit">
-                  Send Message
-                  <Send className="ml-2 h-4 w-4" />
+                  <span className="text-white">Send Message</span>
+                  <Send className="ml-2 h-4 w-4 text-white" />
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   By submitting this form, you agree to be contacted about your inquiry. Your data will only be used to respond to your message.

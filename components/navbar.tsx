@@ -106,7 +106,7 @@ function NavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="text-gray-300 hover:text-primary transition-colors duration-200"
+      className="text-white hover:text-primary transition-colors duration-200"
     >
       {children}
     </Link>
@@ -126,7 +126,7 @@ function MobileNavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary transition-colors duration-200"
+      className="block px-3 py-2 text-base font-medium text-white hover:text-primary transition-colors duration-200"
     >
       {children}
     </Link>
