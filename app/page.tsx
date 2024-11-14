@@ -158,15 +158,16 @@ export default function Home() {
           </motion.div>
           <Card className="p-6">
             <form 
-              action="https://formsubmit.co/oblechdev@gmail.com" 
+              action="https://api.web3forms.com/submit"
               method="POST"
               className="space-y-6"
             >
-              <input type="hidden" name="_next" value="https://oblech.dev" />
-              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon." />
-              <input type="hidden" name="_captcha" value="true" />
+              {/* Add your Web3Forms access key here */}
+              <input 
+                type="hidden" 
+                name="access_key" 
+                value=" 2c94d341-50b5-42ee-bb43-ac4aee948055"
+              />
               
               <div className="space-y-2">
                 <Input name="name" placeholder="Your Name" required />
