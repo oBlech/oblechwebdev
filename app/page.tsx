@@ -199,6 +199,9 @@ export default function Home() {
                   Send Message
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
+                <p className="text-xs text-muted-foreground text-center">
+                  By submitting this form, you agree to be contacted about your inquiry. Your data will only be used to respond to your message.
+                </p>
               </form>
             </Card>
             <div className="mt-8 text-center">
