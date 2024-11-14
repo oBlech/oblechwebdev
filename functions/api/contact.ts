@@ -4,7 +4,21 @@ interface EmailPayload {
   message: string;
 }
 
-export const onRequestPost = async (context) => {
+interface Env {
+  SENDGRID: {
+    send: (options: {
+      to: string;
+      from: string;
+      subject: string;
+      text: string;
+    }) => Promise<void>;
+  };
+}
+
+export const onRequestPost = async (context: { 
+  request: Request; 
+  env: Env;
+}) => {
   try {
     const request = context.request;
     const payload = await request.json();
