@@ -162,6 +162,7 @@ export default function Home() {
               const formData = new FormData(e.currentTarget);
               
               try {
+                console.log('Sending request to worker...');
                 const response = await fetch('https://contact-form-worker.andrew-blach.workers.dev', {
                   method: 'POST',
                   headers: {
@@ -174,8 +175,21 @@ export default function Home() {
                   }),
                 });
 
+                // Log the raw response
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+
+                // Try to parse as JSON if possible
+                let responseData;
+                try {
+                  responseData = JSON.parse(responseText);
+                  console.log('Parsed response:', responseData);
+                } catch (e) {
+                  console.log('Response was not JSON:', responseText);
+                }
+
                 if (!response.ok) {
-                  throw new Error('Failed to send message');
+                  throw new Error(`Failed to send message: ${responseText}`);
                 }
 
                 // Clear form
@@ -184,8 +198,8 @@ export default function Home() {
                 // Show success message
                 alert('Message sent successfully! We will get back to you soon.');
               } catch (error) {
-                console.error('Error sending message:', error);
-                alert('Failed to send message. Please try again later.');
+                console.error('Detailed error:', error);
+                alert(`Failed to send message: ${error.message}`);
               }
             }}>
               <div className="space-y-2">
