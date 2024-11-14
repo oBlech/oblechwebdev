@@ -173,18 +173,19 @@ export default function Home() {
                     message: formData.get('message'),
                   }),
                 });
-                
-                const data = await response.json();
-                
-                if (response.ok && data.success) {
-                  alert('Message sent successfully!');
-                  e.currentTarget.reset();
-                } else {
-                  alert(`Failed to send message: ${data.error || 'Unknown error'}`);
+
+                if (!response.ok) {
+                  throw new Error('Failed to send message');
                 }
+
+                // Clear form
+                e.currentTarget.reset();
+                
+                // Show success message
+                alert('Message sent successfully! We will get back to you soon.');
               } catch (error) {
-                alert('Failed to send message. Please try again.');
-                console.error('Contact form error:', error);
+                console.error('Error sending message:', error);
+                alert('Failed to send message. Please try again later.');
               }
             }}>
               <div className="space-y-2">
