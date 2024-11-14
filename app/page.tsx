@@ -124,7 +124,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">Featured Work</h2>
             <p className="text-muted-foreground">
-              Some of my recent projects
+              A collection of my recent projects
             </p>
           </motion.div>
           <motion.div 
