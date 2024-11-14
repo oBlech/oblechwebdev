@@ -212,6 +212,11 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Copyright */}
+      <div className="text-center py-4 text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} OBLECH. All rights reserved.</p>
+      </div>
     </main>
   );
 }
