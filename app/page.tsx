@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
+import { useState } from "react";
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -114,7 +115,7 @@ export default function Home() {
 
       {/* Work Section */}
       <section id="work" className="py-20 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +133,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-16 max-w-[90%] mx-auto md:max-w-full"
           >
             <ProjectCard
               title="Social Hub"
@@ -254,27 +255,63 @@ function ProjectCard({
   description: string;
   image: string;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const altImage = image.replace('.png', 'alt.png');
+
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="group relative overflow-hidden rounded-xl"
+      className="relative h-[300px] w-full cursor-pointer"
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
-      <div className="relative h-64">
+      <motion.div
+        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
+        animate={{
+          x: isHovered ? -20 : -10,
+          y: isHovered ? -20 : -10,
+          zIndex: isHovered ? 20 : 10,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         <Image
-          src={image}
-          alt={title}
+          src={altImage}
+          alt={`${title} Alternative View`}
           fill
-          className={`transition-transform duration-300 group-hover:scale-110 object-cover ${
-            image.includes('smedia') ? 'object-[25%_center]' : 'object-center'
-          }`}
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300">
           <div className="p-6 h-full flex flex-col justify-end">
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <p className="text-gray-200">{description}</p>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
+        animate={{
+          x: isHovered ? 20 : 10,
+          y: isHovered ? 20 : 10,
+          zIndex: isHovered ? 10 : 20,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={`object-cover ${
+            image.includes('smedia') ? 'object-[25%_center]' : 'object-center'
+          }`}
+        />
+        <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <div className="p-6 h-full flex flex-col justify-end">
+            <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+            <p className="text-gray-200">{description}</p>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
