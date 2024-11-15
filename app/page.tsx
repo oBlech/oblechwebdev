@@ -260,15 +260,25 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="relative h-[300px] w-full cursor-pointer"
+      className="relative h-[300px] w-full cursor-pointer select-none"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
+      onTouchStart={(e) => {
+        if (e.target === e.currentTarget) {
+          e.preventDefault();
+        }
+        setIsHovered(true);
+      }}
+      onTouchEnd={(e) => {
+        if (e.target === e.currentTarget) {
+          e.preventDefault();
+        }
+        setIsHovered(false);
+      }}
     >
-      {/* Back Card (Alt Image) */}
+      {/* Back Card */}
       <motion.div
-        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
+        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg select-none"
         animate={{
           x: isHovered ? -20 : -10,
           y: isHovered ? -20 : -10,
@@ -280,25 +290,26 @@ function ProjectCard({
           src={altImage}
           alt={`${title} Alternative View`}
           fill
-          className="object-cover"
+          className="object-cover pointer-events-none"
+          draggable="false"
         />
         <motion.div 
-          className="absolute inset-0 bg-black/60"
+          className="absolute inset-0 bg-black/60 select-none"
           animate={{
             opacity: isHovered ? 1 : 0
           }}
           transition={{ duration: 0.3 }}
         >
-          <div className="p-6 h-full flex flex-col justify-end">
+          <div className="p-6 h-full flex flex-col justify-end select-none">
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <p className="text-gray-200">{description}</p>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Front Card (Main Image) */}
+      {/* Front Card */}
       <motion.div
-        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
+        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg select-none"
         animate={{
           x: isHovered ? 20 : 10,
           y: isHovered ? 20 : 10,
@@ -310,9 +321,10 @@ function ProjectCard({
           src={image}
           alt={title}
           fill
-          className={`object-cover ${
+          className={`object-cover pointer-events-none ${
             image.includes('smedia') ? 'object-[25%_center]' : 'object-center'
           }`}
+          draggable="false"
         />
       </motion.div>
     </motion.div>
