@@ -114,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 bg-muted/50">
+      <section id="work" className="py-20 bg-muted/80">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -136,14 +136,14 @@ export default function Home() {
             className="grid md:grid-cols-3 gap-16 max-w-[90%] mx-auto md:max-w-full"
           >
             <ProjectCard
-              title="Social Hub"
-              description="Platform for purchasing social media plans and scheduling expert social media consultations."
-              image="/portfolio-images/smedia.png"
-            />
-            <ProjectCard
               title="Liquor Store"
               description="Clean, modern website showcasing a local liquor store's business, location, and hours of operation."
               image="/portfolio-images/smallbusiness.png"
+            />
+            <ProjectCard
+              title="Social Hub"
+              description="Platform for purchasing social media plans and scheduling expert social media consultations."
+              image="/portfolio-images/smedia.png"
             />
             <ProjectCard
               title="Restaurant Portal"
