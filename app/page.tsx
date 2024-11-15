@@ -123,7 +123,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Featured Work</h2>
+            <h2 className="text-3xl font-bold mb-4">Recent Projects</h2>
             <p className="text-muted-foreground">
             A few recent projects, each built with care for a smooth user experience and thoughtful design
             </p>
