@@ -256,7 +256,6 @@ function ProjectCard({
   image: string;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  
   const altImage = image.replace('.png', 'alt.png');
 
   return (
@@ -264,7 +263,10 @@ function ProjectCard({
       className="relative h-[300px] w-full cursor-pointer"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
     >
+      {/* Back Card (Alt Image) */}
       <motion.div
         className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
         animate={{
@@ -280,14 +282,21 @@ function ProjectCard({
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300">
+        <motion.div 
+          className="absolute inset-0 bg-black/60"
+          animate={{
+            opacity: isHovered ? 1 : 0
+          }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="p-6 h-full flex flex-col justify-end">
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <p className="text-gray-200">{description}</p>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
+      {/* Front Card (Main Image) */}
       <motion.div
         className="absolute inset-0 rounded-xl overflow-hidden shadow-lg"
         animate={{
@@ -305,12 +314,6 @@ function ProjectCard({
             image.includes('smedia') ? 'object-[25%_center]' : 'object-center'
           }`}
         />
-        <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300">
-          <div className="p-6 h-full flex flex-col justify-end">
-            <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-            <p className="text-gray-200">{description}</p>
-          </div>
-        </div>
       </motion.div>
     </motion.div>
   );
