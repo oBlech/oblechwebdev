@@ -39,9 +39,11 @@ export function Navbar() {
             <NavLink href="#about" onClick={(e) => handleNavClick(e, "about")}>
               About
             </NavLink>
+            <span className="text-white select-none h-6 inline-flex items-center">/</span>
             <NavLink href="#work" onClick={(e) => handleNavClick(e, "work")}>
               Work
             </NavLink>
+            <span className="text-white select-none h-6 inline-flex items-center">/</span>
             <NavLink href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
               Contact
             </NavLink>
@@ -103,13 +105,21 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="text-white hover:text-primary transition-colors duration-200"
-    >
-      {children}
-    </Link>
+    <div className="relative group">
+      <Link
+        href={href}
+        onClick={onClick}
+        className="text-white hover:text-primary transition-colors duration-200"
+      >
+        {children}
+      </Link>
+      <motion.div
+        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary origin-left"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.2 }}
+      />
+    </div>
   );
 }
 
