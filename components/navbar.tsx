@@ -105,21 +105,13 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative group">
-      <Link
-        href={href}
-        onClick={onClick}
-        className="text-white hover:text-primary transition-colors duration-200"
-      >
-        {children}
-      </Link>
-      <motion.div
-        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary origin-left"
-        initial={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
-        transition={{ duration: 0.2 }}
-      />
-    </div>
+    <Link
+      href={href}
+      onClick={onClick}
+      className="text-white hover:text-primary transition-colors duration-200"
+    >
+      {children}
+    </Link>
   );
 }
 
