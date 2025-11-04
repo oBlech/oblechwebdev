@@ -24,7 +24,7 @@ export default function Home() {
             "name": "OBLECH",
             "url": "https://oblech.dev",
             "jobTitle": "Web Developer",
-            "knowsAbout": ["React", "Next.js", "TailwindCSS", "Web Development", "Framer"],
+            "knowsAbout": ["React", "Next.js", "Tailwind", "Web Development", "Framer"],
             "offers": {
               "@type": "Offer",
               "serviceType": "Web Development Services"
@@ -97,7 +97,7 @@ export default function Home() {
             <SkillCard
               icon={<Code2 className="h-8 w-8" />}
               title="Frontend Development"
-              description="Expert in React, Next.js, and TailwindCSS. Building responsive and performant web applications."
+              description="Expert in React, Next.js, and Tailwind. Building responsive and performant web applications."
             />
             <SkillCard
               icon={<Laptop className="h-8 w-8" />}
@@ -135,6 +135,17 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="grid md:grid-cols-3 gap-16 max-w-[90%] mx-auto md:max-w-full"
           >
+            <a
+              href="https://showmanpainting.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ProjectCard
+                title="Showman Painting"
+                description="Professional painting business website with project showcase, services, and much more."
+                image="/portfolio-images/showman.png"
+              />
+            </a>
             <ProjectCard
               title="Liquor Store"
               description="Clean, modern website showcasing a local liquor store's business, location, and hours of operation."
@@ -144,11 +155,6 @@ export default function Home() {
               title="Social Hub"
               description="Platform for purchasing social media plans and scheduling expert social media consultations."
               image="/portfolio-images/smedia.png"
-            />
-            <ProjectCard
-              title="Restaurant Portal"
-              description="Interactive restaurant website with online ordering, menu management, and reservation system."
-              image="/portfolio-images/restaurant.png"
             />
           </motion.div>
         </div>
