@@ -146,15 +146,21 @@ export default function Home() {
                 image="/portfolio-images/showman.png"
               />
             </a>
+            <a
+              href="https://thevelvetdraw.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ProjectCard
+                title="The Velvet Draw"
+                description="Sleek and cinematic e-commerce site for The Velvet Draw, a luxury cigar & whiskey channel."
+                image="/portfolio-images/velvet.png"
+              />
+            </a>
             <ProjectCard
-              title="Liquor Store"
-              description="Clean, modern website showcasing a local liquor store's business, location, and hours of operation."
-              image="/portfolio-images/smallbusiness.png"
-            />
-            <ProjectCard
-              title="Social Hub"
-              description="Platform for purchasing social media plans and scheduling expert social media consultations."
-              image="/portfolio-images/smedia.png"
+              title="Luminiq"
+              description="High-end e-commerce experience for Luminiq, a modern luxury sunglasses brand."
+              image="/portfolio-images/luminiq.png"
             />
           </motion.div>
         </div>
