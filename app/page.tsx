@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { TesseractCanvas } from "@/components/tesseract-canvas";
-import { GeistPixelLine } from "geist/font/pixel";
+import { GeistPixelCircle, GeistPixelGrid, GeistPixelLine } from "geist/font/pixel";
 import { GeistMono } from "geist/font/mono";
 
 export default function Home() {
@@ -45,8 +45,9 @@ export default function Home() {
             className="space-y-5 sm:space-y-6 md:space-y-7 pt-2 md:pt-0"
           >
             <p className="retro-kicker">Available For Client Work</p>
-            <h1 className={`${GeistPixelLine.className} text-3xl sm:text-5xl md:text-6xl leading-tight`}>
-              Crafting Digital <span className="text-gradient">Experiences</span>
+            <h1 className={`${GeistPixelLine.className} text-4xl sm:text-6xl md:text-7xl leading-tight`}>
+              <span className="pixel-cast-shadow">Crafting Digital</span>{" "}
+              <span className="text-gradient pixel-cast-shadow">Experiences</span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
               Web Developer specializing in React, Next.js, and modern web technologies.
