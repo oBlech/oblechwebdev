@@ -52,6 +52,22 @@ function projectVertex(v: Vec4, t: number): Vec2 {
   return [x3 * zFactor, y3 * zFactor];
 }
 
+function getFitScaleFromBounds(
+  maxAbsX: number,
+  maxAbsY: number,
+  width: number,
+  height: number
+): number {
+  const paddingRatio = 0.12;
+  const usableWidth = width * (1 - paddingRatio * 2);
+  const usableHeight = height * (1 - paddingRatio * 2);
+
+  const scaleX = maxAbsX > 0 ? usableWidth / (maxAbsX * 2) : usableWidth;
+  const scaleY = maxAbsY > 0 ? usableHeight / (maxAbsY * 2) : usableHeight;
+
+  return Math.min(scaleX, scaleY);
+}
+
 export function TesseractCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -64,7 +80,31 @@ export function TesseractCanvas() {
 
     let raf = 0;
     let running = true;
+    let stableScale = 1;
+    let stableLineWidth = 1.8;
+    let stablePointRadius = 3.1;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const computeStableScale = (width: number, height: number) => {
+      let maxAbsX = 0;
+      let maxAbsY = 0;
+      const samples = 180;
+      const sampleDurationMs = 120000;
+
+      for (let i = 0; i < samples; i += 1) {
+        const t = (i / (samples - 1)) * sampleDurationMs;
+        for (const v of vertices) {
+          const [x, y] = projectVertex(v, t);
+          maxAbsX = Math.max(maxAbsX, Math.abs(x));
+          maxAbsY = Math.max(maxAbsY, Math.abs(y));
+        }
+      }
+
+      const scale = getFitScaleFromBounds(maxAbsX, maxAbsY, width, height);
+      stableScale = scale;
+      stableLineWidth = Math.max(1.1, Math.min(1.8, scale * 0.008));
+      stablePointRadius = Math.max(2.1, Math.min(3.1, scale * 0.012));
+    };
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -72,6 +112,7 @@ export function TesseractCanvas() {
       canvas.width = Math.floor(rect.width * dpr);
       canvas.height = Math.floor(rect.height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      computeStableScale(canvas.clientWidth, canvas.clientHeight);
     };
 
     const drawFrame = (time: number) => {
@@ -79,15 +120,16 @@ export function TesseractCanvas() {
 
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
+      if (width === 0 || height === 0) return;
+
       const cx = width / 2;
       const cy = height / 2;
-      const scale = Math.min(width, height) * 1.6;
-
-      ctx.clearRect(0, 0, width, height);
 
       const points = vertices.map((v) => projectVertex(v, time));
 
-      ctx.lineWidth = 1.8;
+      ctx.clearRect(0, 0, width, height);
+
+      ctx.lineWidth = stableLineWidth;
       ctx.strokeStyle = "rgba(52, 211, 153, 0.72)";
       ctx.shadowColor = "rgba(52, 211, 153, 0.36)";
       ctx.shadowBlur = 10;
@@ -96,8 +138,8 @@ export function TesseractCanvas() {
       for (const [a, b] of edges) {
         const [ax, ay] = points[a];
         const [bx, by] = points[b];
-        ctx.moveTo(cx + ax * scale, cy + ay * scale);
-        ctx.lineTo(cx + bx * scale, cy + by * scale);
+        ctx.moveTo(cx + ax * stableScale, cy + ay * stableScale);
+        ctx.lineTo(cx + bx * stableScale, cy + by * stableScale);
       }
       ctx.stroke();
       ctx.shadowBlur = 0;
@@ -105,7 +147,7 @@ export function TesseractCanvas() {
       for (const [x, y] of points) {
         ctx.fillStyle = "rgba(110, 231, 183, 0.95)";
         ctx.beginPath();
-        ctx.arc(cx + x * scale, cy + y * scale, 3.1, 0, Math.PI * 2);
+        ctx.arc(cx + x * stableScale, cy + y * stableScale, stablePointRadius, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -117,7 +159,12 @@ export function TesseractCanvas() {
     resize();
     drawFrame(performance.now());
 
-    const onResize = () => resize();
+    const onResize = () => {
+      resize();
+      if (reduceMotion) {
+        drawFrame(performance.now());
+      }
+    };
     window.addEventListener("resize", onResize);
 
     return () => {

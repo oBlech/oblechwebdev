@@ -8,8 +8,8 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
-import { useState } from "react";
 import { TesseractCanvas } from "@/components/tesseract-canvas";
+import { GeistPixelLine } from "geist/font/pixel";
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -35,27 +35,37 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section className="min-h-screen pt-16 vaporwave-grid">
-        <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-4rem)] items-center">
+      <section className="min-h-screen pt-24 sm:pt-24 md:pt-24 pb-10 sm:pb-14 vaporwave-grid">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100svh-5.5rem)] md:min-h-[calc(100vh-5rem)] items-start md:items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-5 sm:space-y-6 md:space-y-7 pt-2 md:pt-0"
           >
-            <h1 className="text-4xl md:text-6xl font-bold">
+            <p className="retro-kicker">Available For Client Work</p>
+            <h1 className={`${GeistPixelLine.className} text-3xl sm:text-5xl md:text-6xl leading-tight`}>
               Crafting Digital <span className="text-gradient">Experiences</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
               Web Developer specializing in React, Next.js, and modern web technologies.
               Creating fast, responsive, and beautiful web applications.
             </p>
-            <div className="flex gap-4">
-              <Button size="lg" onClick={() => scrollTo("work")}>
-                <span className="text-white">View My Work</span>
-                <ArrowRight className="ml-2 h-4 w-4 text-white" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button
+                size="lg"
+                className="group w-full sm:w-auto border border-primary/50 shadow-[0_0_0_1px_hsl(var(--primary)/0.2)] hover:shadow-[0_0_22px_hsl(var(--primary)/0.32)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                onClick={() => scrollTo("work")}
+              >
+                <span>View My Work</span>
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Button>
-              <Button size="lg" variant="outline" onClick={() => scrollTo("contact")}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-primary/55 bg-background/50 hover:bg-primary/12 hover:border-primary/80 hover:text-primary hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                onClick={() => scrollTo("contact")}
+              >
                 Contact Me
               </Button>
             </div>
@@ -64,17 +74,30 @@ export default function Home() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative h-[400px] md:h-[600px]"
+            className="relative h-[300px] sm:h-[360px] md:h-[560px] mt-1 md:mt-0"
           >
-            <div className="absolute inset-0 rounded-3xl overflow-hidden bg-gradient-to-r from-primary/20 via-primary/5 to-transparent">
-              <TesseractCanvas />
+            <div className="retro-window h-full overflow-hidden flex flex-col">
+              <div className="retro-window-bar">
+                <span className="retro-dot" />
+                <span className="retro-dot opacity-70" />
+                <span className="retro-dot opacity-45" />
+                <span className="ml-2">4D Visualizer</span>
+                <span className="ml-auto text-primary/80">tesseract.tsx</span>
+              </div>
+              <div className="relative flex-1 bg-gradient-to-r from-primary/20 via-primary/5 to-transparent">
+                <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-5">
+                  <div className="h-full max-w-full aspect-square">
+                    <TesseractCanvas />
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="about" className="py-20 bg-background">
+      <section id="about" className="py-20 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,9 +106,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">My Expertise</h2>
-            <p className="text-muted-foreground">
-            Specializing in modern web development technologies to create seamless, responsive sites
+            <p className="retro-kicker mb-3">Toolkit</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Specializing in modern web development technologies to create seamless, responsive sites
             </p>
           </motion.div>
           <motion.div 
@@ -93,7 +117,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-6 md:gap-8"
           >
             <SkillCard
               icon={<Code2 className="h-8 w-8" />}
@@ -115,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 bg-muted/80">
+      <section id="work" className="py-20 md:py-24 bg-muted/65">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -124,9 +148,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Recent Projects</h2>
-            <p className="text-muted-foreground">
-            A few recent projects, each built with care for a smooth user experience and thoughtful design
+            <p className="retro-kicker mb-3">Windowed Builds</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A few recent projects, each built with care for a smooth user experience and thoughtful design
             </p>
           </motion.div>
           <motion.div 
@@ -134,9 +159,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-16 max-w-[90%] mx-auto md:max-w-full"
+            className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-[95%] mx-auto md:max-w-full"
           >
             <a
+              className="block"
               href="https://showmanpainting.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -148,6 +174,7 @@ export default function Home() {
               />
             </a>
             <a
+              className="block"
               href="https://thevelvetdraw.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -159,6 +186,7 @@ export default function Home() {
               />
             </a>
             <a
+              className="block"
               href="https://luminiq.ca"
               target="_blank"
               rel="noopener noreferrer"
@@ -174,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-background">
+      <section id="contact" className="pt-20 md:pt-24 pb-8 md:pb-10 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -183,7 +211,8 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+            <p className="retro-kicker mb-3">Open Channel</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
             <p className="text-muted-foreground">
               Let&apos;s discuss your next project
             </p>
@@ -194,7 +223,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Card className="p-6">
+            <Card className="p-6 sm:p-8 retro-window">
               <form 
                 action="https://api.web3forms.com/submit"
                 method="POST"
@@ -207,17 +236,17 @@ export default function Home() {
                 />
                 
                 <div className="space-y-2">
-                  <Input name="name" placeholder="Your Name" required />
+                  <Input name="name" placeholder="Your Name" className="retro-input" required />
                 </div>
                 <div className="space-y-2">
-                  <Input name="email" type="email" placeholder="Your Email" required />
+                  <Input name="email" type="email" placeholder="Your Email" className="retro-input" required />
                 </div>
                 <div className="space-y-2">
-                  <Textarea name="message" placeholder="Your Message" className="min-h-[150px]" required />
+                  <Textarea name="message" placeholder="Your Message" className="min-h-[150px] retro-input" required />
                 </div>
                 <Button className="w-full" size="lg" type="submit">
-                  <span className="text-white">Send Message</span>
-                  <Send className="ml-2 h-4 w-4 text-white" />
+                  <span>Send Message</span>
+                  <Send className="ml-2 h-4 w-4" />
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   By submitting this form, you agree to be contacted about your inquiry. Your data will only be used to respond to your message.
@@ -233,13 +262,11 @@ export default function Home() {
               </p>
             </div>
           </motion.div>
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} OBLECH. All rights reserved.</p>
+          </div>
         </div>
       </section>
-
-      {/* Copyright */}
-      <div className="text-center py-4 text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} OBLECH. All rights reserved.</p>
-      </div>
     </main>
   );
 }
@@ -255,12 +282,12 @@ function SkillCard({
 }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="p-6 rounded-xl bg-card border"
+      whileHover={{ scale: 1.02 }}
+      className="p-6 rounded-sm retro-card"
     >
       <div className="text-primary mb-4">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
+      <p className="text-muted-foreground leading-relaxed">{description}</p>
     </motion.div>
   );
 }
@@ -274,78 +301,33 @@ function ProjectCard({
   description: string;
   image: string;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const altImage = image.replace('.png', 'alt.png');
-
   return (
     <motion.div
-      className="relative h-[300px] w-full cursor-pointer select-none"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onTouchStart={(e) => {
-        if (e.target === e.currentTarget) {
-          e.preventDefault();
-        }
-        setIsHovered(true);
-      }}
-      onTouchEnd={(e) => {
-        if (e.target === e.currentTarget) {
-          e.preventDefault();
-        }
-        setIsHovered(false);
-      }}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className="group h-[320px] sm:h-[340px] w-full cursor-pointer select-none rounded-sm retro-card overflow-hidden flex flex-col"
     >
-      {/* Back Card */}
-      <motion.div
-        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg select-none"
-        animate={{
-          x: isHovered ? -20 : -10,
-          y: isHovered ? -20 : -10,
-          zIndex: isHovered ? 20 : 10,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      >
-        <Image
-          src={altImage}
-          alt={`${title} Alternative View`}
-          fill
-          className="object-cover pointer-events-none"
-          draggable="false"
-        />
-        <motion.div 
-          className="absolute inset-0 bg-black/60 select-none"
-          animate={{
-            opacity: isHovered ? 1 : 0
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="p-6 h-full flex flex-col justify-end select-none">
-            <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-            <p className="text-gray-200">{description}</p>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Front Card */}
-      <motion.div
-        className="absolute inset-0 rounded-xl overflow-hidden shadow-lg select-none"
-        animate={{
-          x: isHovered ? 20 : 10,
-          y: isHovered ? 20 : 10,
-          zIndex: isHovered ? 10 : 20,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      >
+      <div className="retro-window-bar !min-h-0 py-2 px-3">
+        <span className="retro-dot" />
+        <span className="retro-dot opacity-70" />
+        <span className="ml-2 truncate">{title}</span>
+        <span className="ml-auto text-primary/70">live</span>
+      </div>
+      <div className="relative flex-1 min-h-0">
         <Image
           src={image}
           alt={title}
           fill
-          className={`object-cover pointer-events-none ${
-            image.includes('smedia') ? 'object-[25%_center]' : 'object-center'
-          }`}
+          className="object-cover object-center pointer-events-none"
           draggable="false"
         />
-      </motion.div>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{title}</h3>
+          <p className="text-sm text-gray-200 leading-relaxed">{description}</p>
+          <p className="mt-3 text-xs uppercase tracking-[0.12em] text-primary/90">View Project</p>
+        </div>
+      </div>
     </motion.div>
   );
 }

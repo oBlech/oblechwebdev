@@ -29,7 +29,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 158 64% 52%;
-    --radius: 0.75rem;
+    --radius: 0.35rem;
   }
  
   .dark {
@@ -61,6 +61,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at 18% 0%, rgba(52, 211, 153, 0.08), transparent 34%),
+      radial-gradient(circle at 82% 0%, rgba(110, 231, 183, 0.06), transparent 30%);
   }
 }
 
@@ -84,4 +87,54 @@
   background-image: linear-gradient(0deg, transparent 24%, rgba(52, 211, 153, .05) 25%, rgba(52, 211, 153, .05) 26%, transparent 27%, transparent 74%, rgba(52, 211, 153, .05) 75%, rgba(52, 211, 153, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(52, 211, 153, .05) 25%, rgba(52, 211, 153, .05) 26%, transparent 27%, transparent 74%, rgba(52, 211, 153, .05) 75%, rgba(52, 211, 153, .05) 76%, transparent 77%, transparent);
   background-size: 50px 50px;
   animation: moveGrid 3s linear infinite;
+}
+
+.retro-kicker {
+  color: hsl(var(--primary));
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.retro-window {
+  border: 1px solid hsl(var(--primary) / 0.28);
+  border-radius: 0.35rem;
+  background: hsl(var(--card) / 0.82);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 0 1px hsl(var(--primary) / 0.1) inset;
+}
+
+.retro-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid hsl(var(--primary) / 0.2);
+  background: linear-gradient(180deg, hsl(var(--muted) / 0.75), hsl(var(--muted) / 0.5));
+  color: hsl(var(--muted-foreground));
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.retro-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: hsl(var(--primary) / 0.75);
+}
+
+.retro-card {
+  border: 1px solid hsl(var(--primary) / 0.22);
+  border-radius: 0.35rem;
+  background: linear-gradient(180deg, hsl(var(--card) / 0.94), hsl(var(--card) / 0.86));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.retro-input {
+  border-color: hsl(var(--primary) / 0.4) !important;
+  border-radius: 0.35rem !important;
+  background: hsl(var(--background) / 0.7) !important;
 }
