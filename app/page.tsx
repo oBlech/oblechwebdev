@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { TesseractCanvas } from "@/components/tesseract-canvas";
 import { GeistPixelLine } from "geist/font/pixel";
+import { GeistMono } from "geist/font/mono";
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -202,7 +203,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="pt-20 md:pt-24 pb-8 md:pb-10 bg-background">
+      <section id="contact" className="pt-20 md:pt-24 pb-2 md:pb-3 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -223,28 +224,61 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Card className="p-6 sm:p-8 retro-window">
-              <form 
+            <Card className="overflow-hidden p-0 rounded-sm border border-primary/35 bg-black/45 shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+              <form
                 action="https://api.web3forms.com/submit"
                 method="POST"
-                className="space-y-6"
+                className={`${GeistMono.className} space-y-5 p-5 sm:p-7 bg-black/30`}
               >
+                <p className="text-[11px] uppercase tracking-[0.12em] text-primary/80">$ mail</p>
                 <input 
                   type="hidden" 
                   name="access_key" 
                   value="40c8eb3c-fea8-42cb-98ce-9c19573cce1c"
                 />
                 
-                <div className="space-y-2">
-                  <Input name="name" placeholder="Your Name" className="retro-input" required />
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">name</p>
+                  <div className="mt-1 flex items-center rounded-sm border border-primary/35 bg-black/40 px-2">
+                    <span className="text-primary/80 text-sm">&gt;</span>
+                    <Input
+                      name="name"
+                      placeholder="your name"
+                      className="!border-0 !bg-transparent !px-2 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Input name="email" type="email" placeholder="Your Email" className="retro-input" required />
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">email</p>
+                  <div className="mt-1 flex items-center rounded-sm border border-primary/35 bg-black/40 px-2">
+                    <span className="text-primary/80 text-sm">&gt;</span>
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder="you@email.com"
+                      className="!border-0 !bg-transparent !px-2 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Textarea name="message" placeholder="Your Message" className="min-h-[150px] retro-input" required />
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">message</p>
+                  <div className="mt-1 flex items-start rounded-sm border border-primary/35 bg-black/40 px-2 pt-2">
+                    <span className="text-primary/80 text-sm mt-1">&gt;</span>
+                    <Textarea
+                      name="message"
+                      placeholder="tell me about your project..."
+                      className="min-h-[150px] !border-0 !bg-transparent !px-2 !py-1 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
+                      required
+                    />
+                  </div>
                 </div>
-                <Button className="w-full" size="lg" type="submit">
+                <Button
+                  className={`${GeistMono.className} w-full border border-primary/50 bg-black/45 text-primary hover:bg-primary/20 hover:text-primary`}
+                  size="lg"
+                  type="submit"
+                >
                   <span>Send Message</span>
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
@@ -262,7 +296,7 @@ export default function Home() {
               </p>
             </div>
           </motion.div>
-          <div className="mt-6 text-center text-sm text-muted-foreground">
+          <div className="mt-3 text-center text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} OBLECH. All rights reserved.</p>
           </div>
         </div>
