@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Globe, Laptop, Mail, Send } from "lucide-react";
+import { ArrowRight, Code2, Globe, Laptop, Send } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { useState } from "react";
+import { TesseractCanvas } from "@/components/tesseract-canvas";
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -65,8 +66,8 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="relative h-[400px] md:h-[600px]"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl overflow-hidden">
-              <Code2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 text-primary/20" />
+            <div className="absolute inset-0 rounded-3xl overflow-hidden bg-gradient-to-r from-primary/20 via-primary/5 to-transparent">
+              <TesseractCanvas />
             </div>
           </motion.div>
         </div>
@@ -157,11 +158,17 @@ export default function Home() {
                 image="/portfolio-images/velvet.png"
               />
             </a>
-            <ProjectCard
-              title="Luminiq"
-              description="High-end e-commerce experience for Luminiq, a modern luxury sunglasses brand."
-              image="/portfolio-images/luminiq.png"
-            />
+            <a
+              href="https://luminiq.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ProjectCard
+                title="Luminiq"
+                description="High-end e-commerce experience for Luminiq, a modern luxury sunglasses brand."
+                image="/portfolio-images/luminiq.png"
+              />
+            </a>
           </motion.div>
         </div>
       </section>
@@ -178,7 +185,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
             <p className="text-muted-foreground">
-              Let's discuss your next project
+              Let&apos;s discuss your next project
             </p>
           </motion.div>
           <motion.div
