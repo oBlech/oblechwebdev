@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { TesseractCanvas } from "@/components/tesseract-canvas";
-import { GeistPixelCircle, GeistPixelGrid, GeistPixelLine } from "geist/font/pixel";
+import { GeistPixelLine } from "geist/font/pixel";
 import { GeistMono } from "geist/font/mono";
 
 export default function Home() {
@@ -114,28 +114,34 @@ export default function Home() {
               Specializing in modern web development technologies to create seamless, responsive sites
             </p>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-6 md:gap-8"
+            className="expertise-matrix relative overflow-hidden"
           >
-            <SkillCard
-              icon={<Code2 className="h-8 w-8" />}
-              title="Frontend Development"
-              description="Expert in React, Next.js, and Tailwind. Building responsive and performant web applications."
-            />
-            <SkillCard
-              icon={<Laptop className="h-8 w-8" />}
-              title="Modern Technologies"
-              description="Utilizing the latest web technologies and best practices for optimal results."
-            />
-            <SkillCard
-              icon={<Globe className="h-8 w-8" />}
-              title="SEO Optimization"
-              description="Implementing SEO best practices to improve visibility and ranking."
-            />
+            <div className="expertise-grid-bg absolute inset-0" aria-hidden="true" />
+            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 p-4 sm:p-6 md:p-7 items-stretch">
+              <ExpertiseTile
+                className="h-full"
+                icon={<Code2 className="h-7 w-7" />}
+                title="Frontend Development"
+                description="React, Next.js, and Tailwind for fast, responsive UI with clean architecture."
+              />
+              <ExpertiseTile
+                className="h-full"
+                icon={<Laptop className="h-7 w-7" />}
+                title="Modern Stack"
+                description="Current tooling, performance-first patterns, and maintainable component systems."
+              />
+              <ExpertiseTile
+                className="h-full"
+                icon={<Globe className="h-7 w-7" />}
+                title="SEO + Visibility"
+                description="Technical SEO, metadata, and indexing practices to improve discoverability."
+              />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -306,24 +312,23 @@ export default function Home() {
   );
 }
 
-function SkillCard({
+function ExpertiseTile({
   icon,
   title,
   description,
+  className = "",
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
 }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className="p-6 rounded-sm retro-card"
-    >
+    <div className={`expertise-tile ${className}`}>
       <div className="text-primary mb-4">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
-    </motion.div>
+      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{description}</p>
+    </div>
   );
 }
 
