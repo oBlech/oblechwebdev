@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { GeistPixelSquare } from 'geist/font/pixel';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Navbar } from '@/components/navbar';
+import { CustomCursor } from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://oblech.dev'),
@@ -76,8 +76,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
+          <CustomCursor />
         </ThemeProvider>
       </body>
     </html>

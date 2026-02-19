@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Globe, Laptop, Send } from "lucide-react";
+import { Code2, Globe, Laptop, Send } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { PixelShaderBackground } from "@/components/pixel-shader-background";
 import { useScrollTo } from "@/hooks/useScrollTo";
-import { TesseractCanvas } from "@/components/tesseract-canvas";
 import { GeistPixelLine } from "geist/font/pixel";
 import { GeistMono } from "geist/font/mono";
 
@@ -16,7 +16,7 @@ export default function Home() {
   const scrollTo = useScrollTo();
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen site-cool-bg">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -36,80 +36,64 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section className="min-h-screen pt-24 sm:pt-24 md:pt-24 pb-10 sm:pb-14 vaporwave-grid">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100svh-5.5rem)] md:min-h-[calc(100vh-5rem)] items-start md:items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-5 sm:space-y-6 md:space-y-7 pt-2 md:pt-0"
-          >
-            <p className="retro-kicker">Available For Client Work</p>
-            <h1 className={`${GeistPixelLine.className} text-4xl sm:text-6xl md:text-7xl leading-tight`}>
-              <span className="pixel-cast-shadow">Crafting Digital</span>{" "}
-              <span className="text-gradient pixel-cast-shadow">Experiences</span>
-            </h1>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
-              Web Developer specializing in React, Next.js, and modern web technologies.
-              Creating fast, responsive, and beautiful web applications.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <section className="relative min-h-screen overflow-hidden">
+        <PixelShaderBackground className="hero-pixel-layer absolute inset-0 z-0" />
+        <div className="mx-auto relative flex min-h-screen w-full max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8 md:justify-start">
+          <div className="relative z-10 inline-block py-1 pr-[clamp(2.8rem,8vw,4.8rem)] md:pr-[clamp(3.5rem,8vw,6rem)]">
+            <div className="relative inline-block">
+              <h1
+                aria-hidden="true"
+                className={`${GeistPixelLine.className} pointer-events-none absolute left-0 top-0 -z-0 select-none whitespace-nowrap text-[clamp(3rem,8vw,6.5rem)] text-primary/40 blur-[0.6px] [text-shadow:0_0_20px_hsl(var(--primary)/0.4)] translate-x-[0.06em] translate-y-[0.08em]`}
+              >
+                <span className="block leading-[0.8]">OBLECH</span>
+                <span className="absolute -bottom-[0.06em] left-full ml-1 text-[clamp(1.5rem,3.8vw,2.25rem)] leading-[0.8]">
+                  dev
+                </span>
+              </h1>
+              <h1
+                className={`${GeistPixelLine.className} relative z-10 inline-block select-none whitespace-nowrap text-[clamp(3rem,8vw,6.5rem)]`}
+              >
+                <span className="block leading-[0.8]">OBLECH</span>
+                <span className="absolute -bottom-[0.06em] left-full ml-1 text-[clamp(1.5rem,3.8vw,2.25rem)] leading-[0.8]">
+                  dev
+                </span>
+              </h1>
+            </div>
+            <div className="absolute left-1/2 top-[calc(100%+clamp(1rem,2.2vw,1.75rem))] flex -translate-x-1/2 flex-col gap-3 md:left-0 md:translate-x-0 md:flex-row md:gap-4">
               <Button
                 size="lg"
-                className="group w-full sm:w-auto border border-primary/50 shadow-[0_0_0_1px_hsl(var(--primary)/0.2)] hover:shadow-[0_0_22px_hsl(var(--primary)/0.32)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="w-[min(13.5rem,64vw)] justify-center border border-primary/50 shadow-[0_0_0_1px_hsl(var(--primary)/0.2)] hover:shadow-[0_0_22px_hsl(var(--primary)/0.32)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 md:w-auto"
                 onClick={() => scrollTo("work")}
               >
-                <span>View My Work</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                View My Work
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-primary/55 bg-background/50 hover:bg-primary/12 hover:border-primary/80 hover:text-primary hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="w-[min(13.5rem,64vw)] justify-center border-primary/55 bg-background/50 hover:bg-primary/12 hover:border-primary/80 hover:text-primary hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 md:w-auto"
                 onClick={() => scrollTo("contact")}
               >
                 Contact Me
               </Button>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative h-[300px] sm:h-[360px] md:h-[560px] mt-1 md:mt-0"
-          >
-            <div className="retro-window h-full overflow-hidden flex flex-col">
-              <div className="retro-window-bar">
-                <span className="retro-dot" />
-                <span className="retro-dot opacity-70" />
-                <span className="retro-dot opacity-45" />
-                <span className="ml-2">4D Visualizer</span>
-                <span className="ml-auto text-primary/80">tesseract.tsx</span>
-              </div>
-              <div className="relative flex-1 bg-gradient-to-r from-primary/20 via-primary/5 to-transparent">
-                <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-5">
-                  <div className="h-full max-w-full aspect-square">
-                    <TesseractCanvas />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="about" className="py-20 md:py-24 bg-background">
+      <section id="about" className="open-section py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-12 open-section-head"
           >
             <p className="retro-kicker mb-3">Toolkit</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
+            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
+              My Expertise
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Specializing in modern web development technologies to create seamless, responsive sites
             </p>
@@ -147,17 +131,19 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 md:py-24 bg-muted/65">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+      <section id="work" className="open-section py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-12 open-section-head"
           >
             <p className="retro-kicker mb-3">Windowed Builds</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
+            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
+              Recent Projects
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               A few recent projects, each built with care for a smooth user experience and thoughtful design
             </p>
@@ -210,17 +196,19 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="pt-20 md:pt-24 pb-2 md:pb-3 bg-background">
+      <section id="contact" className="open-section pt-20 md:pt-24 pb-2 md:pb-3">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-12 open-section-head"
           >
             <p className="retro-kicker mb-3">Open Channel</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
+              Get in Touch
+            </h2>
             <p className="text-muted-foreground">
               Let&apos;s discuss your next project
             </p>
@@ -231,11 +219,11 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Card className="overflow-hidden p-0 rounded-sm border border-primary/35 bg-black/45 shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+            <Card className="contact-open-shell overflow-hidden p-0 rounded-sm">
               <form
                 action="https://api.web3forms.com/submit"
                 method="POST"
-                className={`${GeistMono.className} space-y-5 p-5 sm:p-7 bg-black/30`}
+                className={`${GeistMono.className} contact-open-form space-y-5 p-5 sm:p-7`}
               >
                 <p className="text-[11px] uppercase tracking-[0.12em] text-primary/80">$ mail</p>
                 <input 
@@ -246,7 +234,7 @@ export default function Home() {
                 
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">name</p>
-                  <div className="mt-1 flex items-center rounded-sm border border-primary/35 bg-black/40 px-2">
+                  <div className="field-shell mt-1 flex items-center rounded-sm px-2">
                     <span className="text-primary/80 text-sm">&gt;</span>
                     <Input
                       name="name"
@@ -258,7 +246,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">email</p>
-                  <div className="mt-1 flex items-center rounded-sm border border-primary/35 bg-black/40 px-2">
+                  <div className="field-shell mt-1 flex items-center rounded-sm px-2">
                     <span className="text-primary/80 text-sm">&gt;</span>
                     <Input
                       name="email"
@@ -271,7 +259,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">message</p>
-                  <div className="mt-1 flex items-start rounded-sm border border-primary/35 bg-black/40 px-2 pt-2">
+                  <div className="field-shell mt-1 flex items-start rounded-sm px-2 pt-2">
                     <span className="text-primary/80 text-sm mt-1">&gt;</span>
                     <Textarea
                       name="message"
@@ -345,9 +333,9 @@ function ProjectCard({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ duration: 0.22, ease: "easeOut" }}
-      className="group h-[320px] sm:h-[340px] w-full cursor-pointer select-none rounded-sm retro-card overflow-hidden flex flex-col"
+      className="group h-[320px] sm:h-[340px] w-full cursor-pointer select-none rounded-sm retro-card open-project-card overflow-hidden flex flex-col"
     >
-      <div className="retro-window-bar !min-h-0 py-2 px-3">
+      <div className="retro-window-bar open-project-bar !min-h-0 py-2 px-3">
         <span className="retro-dot" />
         <span className="retro-dot opacity-70" />
         <span className="ml-2 truncate">{title}</span>
