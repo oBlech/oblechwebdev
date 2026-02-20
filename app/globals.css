@@ -331,3 +331,49 @@
   border: 1px solid hsl(var(--primary) / 0.34);
   background: hsl(var(--background) / 0.14);
 }
+
+.hero-work-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid hsl(var(--primary) / 0.58);
+  background: transparent;
+  color: hsl(0 0% 100%);
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2);
+  transition:
+    color 0.22s ease,
+    transform 0.2s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.hero-work-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-work-btn:hover::before,
+.hero-work-btn:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.hero-work-btn:hover,
+.hero-work-btn:focus-visible {
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary) / 0.82);
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.24),
+    0 0 22px hsl(var(--primary) / 0.32);
+  transform: translateY(-2px);
+}
+
+.hero-work-btn:active {
+  transform: translateY(0);
+}

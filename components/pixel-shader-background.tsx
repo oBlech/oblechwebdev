@@ -7,6 +7,7 @@ type PixelShaderBackgroundProps = {
 };
 
 const PRIMARY_RGB = "52, 211, 153";
+const MAX_GRID_CELLS = 9200;
 
 export function PixelShaderBackground({ className = "" }: PixelShaderBackgroundProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -62,8 +63,10 @@ export function PixelShaderBackground({ className = "" }: PixelShaderBackgroundP
       canvas.height = Math.floor(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Keep cell count constrained for stable performance across screen sizes.
-      cell = Math.min(28, Math.max(12, Math.min(width, height) / 24));
+      // Keep cell density capped so large/zoomed-out viewports do not scale cost linearly.
+      const baseCell = Math.min(28, Math.max(12, Math.min(width, height) / 24));
+      const areaDrivenMinCell = Math.sqrt((width * height) / MAX_GRID_CELLS);
+      cell = Math.max(baseCell, areaDrivenMinCell);
       cols = Math.ceil(width / cell) + 1;
       rows = Math.ceil(height / cell) + 1;
     };

@@ -62,7 +62,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-[calc(100%+clamp(1rem,2.2vw,1.75rem))] flex -translate-x-1/2 flex-col gap-3 md:left-0 md:translate-x-0 md:flex-row md:gap-4">
               <Button
                 size="lg"
-                className="w-[min(13.5rem,64vw)] justify-center border border-primary/50 shadow-[0_0_0_1px_hsl(var(--primary)/0.2)] hover:shadow-[0_0_22px_hsl(var(--primary)/0.32)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 md:w-auto"
+                className="hero-work-btn !bg-transparent hover:!bg-transparent w-[min(13.5rem,64vw)] justify-center md:w-auto"
                 onClick={() => scrollTo("work")}
               >
                 View My Work
