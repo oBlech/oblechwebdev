@@ -162,6 +162,16 @@ export function PixelShaderBackground({ className = "" }: PixelShaderBackgroundP
           const waveC = Math.sin((x + y) * 0.01 + t * 0.9);
           const wave = (waveA + waveB + waveC) / 3;
           const waveNorm = (wave + 1) * 0.5;
+          const shimmerField =
+            Math.sin(x * 0.052 + y * 0.037 - t * 2.2) +
+            Math.cos(x * 0.031 - y * 0.029 + t * 1.65);
+          const shimmerNorm = (shimmerField + 2) * 0.25;
+          const shimmerBoost = Math.max(0, shimmerNorm - 0.62);
+          // Sparse glints: seeded per cell, driven by existing shimmer so cost stays low.
+          const seed = (((col + 11) * 374761393) ^ ((row + 17) * 668265263)) >>> 0;
+          const seedNorm = (seed & 1023) / 1023;
+          const glintMask = seedNorm > 0.74 ? 1 : 0;
+          const glint = glintMask * Math.max(0, shimmerNorm - 0.73) * 2.9;
 
           let hoverBoost = 0;
           if (hoverStrength > 0) {
@@ -199,11 +209,14 @@ export function PixelShaderBackground({ className = "" }: PixelShaderBackgroundP
             rippleBoost = Math.min(1.2, rippleBoost);
           }
 
-          const baseSize = cell * (0.28 + waveNorm * 0.22);
+          const baseSize = cell * (0.28 + waveNorm * 0.22 + shimmerBoost * 0.12 + glint * 0.06);
           const expandSize = cell * (0.75 * hoverBoost + 0.52 * rippleBoost);
           const size = Math.min(cell * 1.95, baseSize + expandSize);
 
-          const alpha = Math.min(0.42, 0.06 + waveNorm * 0.1 + hoverBoost * 0.14 + rippleBoost * 0.12);
+          const alpha = Math.min(
+            0.42,
+            0.06 + waveNorm * 0.1 + shimmerBoost * 0.09 + glint * 0.08 + hoverBoost * 0.14 + rippleBoost * 0.12
+          );
           const paletteIndex = Math.max(0, Math.min(63, Math.round((alpha / 0.42) * 63)));
           ctx.fillStyle = palette[paletteIndex];
 
