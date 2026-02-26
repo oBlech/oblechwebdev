@@ -198,7 +198,7 @@ export default function Home() {
       <section id="contact" className="py-24 md:py-32 relative border-t border-primary/10 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_70%)] pointer-events-none" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center justify-center text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -256,16 +256,17 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative group mt-4">
+              <div className="relative group">
                 <textarea 
                   name="message" 
                   id="message"
                   required 
-                  className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent min-h-[120px] resize-none`} 
+                  rows={1}
+                  className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent resize-y`} 
                   placeholder="Message"
                 ></textarea>
                 <label htmlFor="message" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
-                  Tell me about your project...
+                  What&apos;s your message?
                 </label>
               </div>
 
