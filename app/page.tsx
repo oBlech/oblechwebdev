@@ -236,7 +236,7 @@ export default function Home() {
                     className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent`} 
                     placeholder="Name" 
                   />
-                  <label htmlFor="name" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                  <label htmlFor="name" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl pointer-events-none select-none transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
                     What&apos;s your name?
                   </label>
                 </div>
@@ -250,7 +250,7 @@ export default function Home() {
                     className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent`} 
                     placeholder="Email" 
                   />
-                  <label htmlFor="email" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                  <label htmlFor="email" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl pointer-events-none select-none transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
                     What&apos;s your email?
                   </label>
                 </div>
@@ -265,7 +265,7 @@ export default function Home() {
                   className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent resize-y`} 
                   placeholder="Message"
                 ></textarea>
-                <label htmlFor="message" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                <label htmlFor="message" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl pointer-events-none select-none transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
                   What&apos;s your message?
                 </label>
               </div>
