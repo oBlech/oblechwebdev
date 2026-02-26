@@ -1,12 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Globe, Laptop, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { PixelShaderBackground } from "@/components/pixel-shader-background";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { GeistPixelLine } from "geist/font/pixel";
@@ -80,282 +77,226 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="about" className="open-section py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Skills / About Section - Modernized */}
+      <section id="about" className="py-24 md:py-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12 open-section-head"
+            className="flex flex-col md:flex-row gap-12 justify-between items-start mb-20"
           >
-            <p className="retro-kicker mb-3">Toolkit</p>
-            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
-              My Expertise
+            <h2 className={`${GeistPixelLine.className} text-5xl md:text-7xl leading-[1.1] tracking-tight md:max-w-xl`}>
+              Pushing <span className="text-primary/80">pixels</span> & boundaries.
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Specializing in modern web development technologies to create seamless, responsive sites
+            <p className="text-lg text-muted-foreground max-w-md mt-2 md:mt-4">
+              I specialize in building immersive digital experiences. Blending cutting-edge tech with meticulous design to create web products that stand out and perform.
             </p>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="expertise-matrix relative overflow-hidden"
-          >
-            <div className="expertise-grid-bg absolute inset-0" aria-hidden="true" />
-            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 p-4 sm:p-6 md:p-7 items-stretch">
-              <ExpertiseTile
-                className="h-full"
-                icon={<Code2 className="h-7 w-7" />}
-                title="Frontend Development"
-                description="React, Next.js, and Tailwind for fast, responsive UI with clean architecture."
-              />
-              <ExpertiseTile
-                className="h-full"
-                icon={<Laptop className="h-7 w-7" />}
-                title="Modern Stack"
-                description="Current tooling, performance-first patterns, and maintainable component systems."
-              />
-              <ExpertiseTile
-                className="h-full"
-                icon={<Globe className="h-7 w-7" />}
-                title="SEO + Visibility"
-                description="Technical SEO, metadata, and indexing practices to improve discoverability."
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Work Section */}
-      <section id="work" className="open-section py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12 open-section-head"
-          >
-            <p className="retro-kicker mb-3">Windowed Builds</p>
-            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
-              Recent Projects
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              A few recent projects, each built with care for a smooth user experience and thoughtful design
-            </p>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-[95%] mx-auto md:max-w-full"
-          >
-            <a
-              className="block"
-              href="https://showmanpainting.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ProjectCard
-                title="Showman Painting"
-                description="Professional painting business website with project showcase, services, and much more."
-                image="/portfolio-images/showman.png"
-              />
-            </a>
-            <a
-              className="block"
-              href="https://thevelvetdraw.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ProjectCard
-                title="The Velvet Draw"
-                description="Sleek and cinematic e-commerce site for The Velvet Draw, a luxury cigar & whiskey channel."
-                image="/portfolio-images/velvet.png"
-              />
-            </a>
-            <a
-              className="block"
-              href="https://luminiq.ca"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ProjectCard
-                title="Luminiq"
-                description="High-end e-commerce experience for Luminiq, a modern luxury sunglasses brand."
-                image="/portfolio-images/luminiq.png"
-              />
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="open-section pt-20 md:pt-24 pb-2 md:pb-3">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12 open-section-head"
-          >
-            <p className="retro-kicker mb-3">Open Channel</p>
-            <h2 className={`${GeistPixelLine.className} text-3xl md:text-4xl mb-4 tracking-[0.02em]`}>
-              Get in Touch
-            </h2>
-            <p className="text-muted-foreground">
-              Let&apos;s discuss your next project
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Card className="contact-open-shell overflow-hidden p-0 rounded-sm">
-              <form
-                action="https://api.web3forms.com/submit"
-                method="POST"
-                className={`${GeistMono.className} contact-open-form space-y-5 p-5 sm:p-7`}
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8 pt-12 border-t border-primary/20">
+            {[
+              { num: "01", title: "Frontend Architecture", desc: "Crafting scalable, fast, and responsive user interfaces with React, Next.js, and modern CSS frameworks." },
+              { num: "02", title: "Creative Development", desc: "Bringing static designs to life with fluid animations, interactive layouts, and micro-interactions that engage users." },
+              { num: "03", title: "Performance & SEO", desc: "Ensuring your site not only looks stunning but ranks high, loads instantly, and delivers across all devices." },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="flex flex-col gap-5 group"
               >
-                <p className="text-[11px] uppercase tracking-[0.12em] text-primary/80">$ mail</p>
-                <input 
-                  type="hidden" 
-                  name="access_key" 
-                  value="40c8eb3c-fea8-42cb-98ce-9c19573cce1c"
-                />
+                <span className={`${GeistMono.className} text-primary/50 text-sm tracking-[0.2em] uppercase`}>
+                  {item.num} //
+                </span>
+                <h3 className={`${GeistPixelLine.className} text-3xl group-hover:text-primary transition-colors duration-300`}>
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Work Section - Modernized */}
+      <section id="work" className="py-24 md:py-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          >
+            <div>
+              <p className={`${GeistMono.className} text-primary/80 text-sm tracking-[0.15em] uppercase mb-4`}>
+                Selected Work
+              </p>
+              <h2 className={`${GeistPixelLine.className} text-5xl md:text-7xl tracking-tight`}>
+                Recent Projects
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-sm">
+              A curated selection of my latest projects, blending aesthetics with performance.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-col border-t border-primary/20">
+            {[
+              { title: "Showman Painting", desc: "Professional painting business website.", link: "https://showmanpainting.com", img: "/portfolio-images/showman.png", role: "Design & Dev" },
+              { title: "The Velvet Draw", desc: "Sleek and cinematic e-commerce site.", link: "https://thevelvetdraw.com/", img: "/portfolio-images/velvet.png", role: "Fullstack E-comm" },
+              { title: "Luminiq", desc: "High-end luxury sunglasses brand experience.", link: "https://luminiq.ca", img: "/portfolio-images/luminiq.png", role: "Frontend & UI" }
+            ].map((p, i) => (
+              <motion.a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative flex flex-col md:flex-row md:items-center justify-between border-b border-primary/20 py-10 md:py-16 gap-6 transition-colors hover:bg-primary/[0.03]"
+              >
+                <div className="flex flex-col z-0 md:w-1/2">
+                  <span className={`${GeistMono.className} text-sm text-primary/60 mb-3 uppercase tracking-wider`}>
+                    {p.role}
+                  </span>
+                  <h3 className={`${GeistPixelLine.className} text-4xl md:text-5xl lg:text-6xl text-foreground group-hover:text-primary transition-colors duration-300`}>
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 text-muted-foreground md:hidden">{p.desc}</p>
+                </div>
                 
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">name</p>
-                  <div className="field-shell mt-1 flex items-center rounded-sm px-2">
-                    <span className="text-primary/80 text-sm">&gt;</span>
-                    <Input
-                      name="name"
-                      placeholder="your name"
-                      className="!border-0 !bg-transparent !px-2 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
-                      required
-                    />
+                {/* Image Reveal on Hover (Desktop) */}
+                <div className="hidden md:block absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[28rem] h-[18rem] opacity-0 group-hover:opacity-100 group-hover:-translate-x-1/2 transition-all duration-500 pointer-events-none z-20 overflow-hidden rounded-sm border border-primary/20 shadow-2xl">
+                  <Image src={p.img} alt={p.title} fill className="object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-black/20" />
+                </div>
+
+                <div className="flex items-center justify-between md:w-1/4 z-0">
+                  <p className="hidden md:block text-muted-foreground text-right w-full pr-8">
+                    {p.desc}
+                  </p>
+                  <div className={`${GeistMono.className} inline-flex items-center justify-center rounded-sm border border-primary/30 px-6 py-2 text-sm font-medium shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all`}>
+                    Visit Site
                   </div>
                 </div>
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">email</p>
-                  <div className="field-shell mt-1 flex items-center rounded-sm px-2">
-                    <span className="text-primary/80 text-sm">&gt;</span>
-                    <Input
-                      name="email"
-                      type="email"
-                      placeholder="you@email.com"
-                      className="!border-0 !bg-transparent !px-2 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
-                      required
-                    />
-                  </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section - Modernized */}
+      <section id="contact" className="py-24 md:py-32 relative border-t border-primary/10 overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_70%)] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center justify-center text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className={`${GeistMono.className} text-primary/80 text-sm tracking-[0.2em] uppercase mb-6`}>
+              Open Channel
+            </p>
+            <h2 className={`${GeistPixelLine.className} text-[clamp(3.5rem,8vw,8rem)] leading-none text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/40 mb-8`}>
+              LET&apos;S TALK
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-16">
+              Ready to start a project? Have a question? My inbox is always open.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full text-left"
+          >
+            <form action="https://api.web3forms.com/submit" method="POST" className="flex flex-col gap-10">
+              <input type="hidden" name="access_key" value="40c8eb3c-fea8-42cb-98ce-9c19573cce1c" />
+              
+              <div className="grid md:grid-cols-2 gap-10">
+                <div className="relative group">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    id="name"
+                    required 
+                    className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent`} 
+                    placeholder="Name" 
+                  />
+                  <label htmlFor="name" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                    What&apos;s your name?
+                  </label>
                 </div>
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.12em] text-primary/85">message</p>
-                  <div className="field-shell mt-1 flex items-start rounded-sm px-2 pt-2">
-                    <span className="text-primary/80 text-sm mt-1">&gt;</span>
-                    <Textarea
-                      name="message"
-                      placeholder="tell me about your project..."
-                      className="min-h-[150px] !border-0 !bg-transparent !px-2 !py-1 placeholder:text-primary/45 focus-visible:!ring-0 focus-visible:!ring-offset-0"
-                      required
-                    />
-                  </div>
+                
+                <div className="relative group">
+                  <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    required 
+                    className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent`} 
+                    placeholder="Email" 
+                  />
+                  <label htmlFor="email" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                    What&apos;s your email?
+                  </label>
                 </div>
-                <Button
-                  className={`${GeistMono.className} w-full border border-primary/50 bg-black/45 text-primary hover:bg-primary/20 hover:text-primary`}
-                  size="lg"
-                  type="submit"
-                >
-                  <span>Send Message</span>
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
+              </div>
+
+              <div className="relative group mt-4">
+                <textarea 
+                  name="message" 
+                  id="message"
+                  required 
+                  className={`${GeistMono.className} peer w-full bg-transparent border-0 border-b border-primary/30 py-4 px-0 text-lg md:text-xl focus:ring-0 focus:border-primary focus:outline-none transition-colors placeholder-transparent min-h-[120px] resize-none`} 
+                  placeholder="Message"
+                ></textarea>
+                <label htmlFor="message" className={`${GeistMono.className} absolute left-0 top-4 text-muted-foreground text-lg md:text-xl cursor-text transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-6 peer-valid:text-xs peer-valid:text-primary/70 uppercase tracking-widest`}>
+                  Tell me about your project...
+                </label>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-8">
+                <p className="text-xs text-muted-foreground text-center md:text-left max-w-sm">
                   By submitting this form, you agree to be contacted about your inquiry. Your data will only be used to respond to your message.
                 </p>
-              </form>
-            </Card>
-            <div className="mt-8 text-center">
-              <p className="text-muted-foreground">
-                Or reach out directly at{" "}
-                <a href="mailto:contact@oblech.dev" className="text-primary hover:underline">
-                  contact@oblech.dev
-                </a>
-              </p>
-            </div>
+                
+                <button 
+                  type="submit" 
+                  className="group relative inline-flex items-center justify-center px-10 py-5 font-mono text-sm uppercase tracking-[0.2em] overflow-hidden border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-full md:w-auto"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    Send Message
+                    <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </span>
+                </button>
+              </div>
+            </form>
           </motion.div>
-          <div className="mt-3 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} OBLECH. All rights reserved.</p>
+
+          <div className="mt-24 pt-8 border-t border-primary/10 w-full flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className={`${GeistMono.className} text-sm text-muted-foreground`}>
+              &copy; {new Date().getFullYear()} OBLECH. All rights reserved.
+            </p>
+            <a href="mailto:contact@oblech.dev" className={`${GeistMono.className} text-sm text-primary hover:underline uppercase tracking-widest`}>
+              contact@oblech.dev
+            </a>
           </div>
         </div>
       </section>
     </main>
-  );
-}
-
-function ExpertiseTile({
-  icon,
-  title,
-  description,
-  className = "",
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  className?: string;
-}) {
-  return (
-    <div className={`expertise-tile ${className}`}>
-      <div className="text-primary mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{description}</p>
-    </div>
-  );
-}
-
-function ProjectCard({
-  title,
-  description,
-  image,
-}: {
-  title: string;
-  description: string;
-  image: string;
-}) {
-  return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.22, ease: "easeOut" }}
-      className="group h-[320px] sm:h-[340px] w-full cursor-pointer select-none rounded-sm retro-card open-project-card overflow-hidden flex flex-col"
-    >
-      <div className="retro-window-bar open-project-bar !min-h-0 py-2 px-3">
-        <span className="retro-dot" />
-        <span className="retro-dot opacity-70" />
-        <span className="ml-2 truncate">{title}</span>
-        <span className="ml-auto text-primary/70">live</span>
-      </div>
-      <div className="relative flex-1 min-h-0">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover object-center pointer-events-none"
-          draggable="false"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{title}</h3>
-          <p className="text-sm text-gray-200 leading-relaxed">{description}</p>
-          <p className="mt-3 text-xs uppercase tracking-[0.12em] text-primary/90">View Project</p>
-        </div>
-      </div>
-    </motion.div>
   );
 }
