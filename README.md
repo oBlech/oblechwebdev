@@ -29,7 +29,7 @@ Ensure you have Node.js 18+ installed on your environment.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/oBlech/oblechwebdev.git
+   git clone https://github.com/ablach-dev/oblechwebdev.git
    ```
 
 2. Install dependencies:
